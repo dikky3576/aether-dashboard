@@ -1,0 +1,89 @@
+/*
+ * Motion presets for overlays (150–250ms, ease-out in / ease-in-out out).
+ * Used through Radix data-state attributes:
+ *   data-[state=open]:animate-pop-in  data-[state=closed]:animate-pop-out
+ * prefers-reduced-motion collapses all durations globally (see index.css).
+ */
+@theme {
+  --animate-pop-in: pop-in var(--duration-fast) var(--motion-ease-out);
+  --animate-pop-out: pop-out 100ms var(--motion-ease-in-out) forwards;
+  --animate-fade-in: fade-in var(--duration-base) var(--motion-ease-out);
+  --animate-fade-out: fade-out 150ms var(--motion-ease-in-out) forwards;
+  --animate-dialog-in: dialog-in var(--duration-slow) var(--motion-ease-out);
+  --animate-dialog-out: dialog-out 150ms var(--motion-ease-in-out) forwards;
+  --animate-drawer-in: drawer-in var(--duration-slow) var(--motion-ease-out);
+  --animate-drawer-out: drawer-out 180ms var(--motion-ease-in-out) forwards;
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97) translateY(-2px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes pop-out {
+    from {
+      opacity: 1;
+      transform: none;
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes dialog-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes dialog-out {
+    from {
+      opacity: 1;
+      transform: none;
+    }
+    to {
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+  }
+  @keyframes drawer-in {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: none;
+    }
+  }
+  @keyframes drawer-out {
+    from {
+      transform: none;
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}

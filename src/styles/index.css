@@ -1,0 +1,137 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import './tokens.css';
+@import './animations.css';
+
+/* `.dark` on <html> drives dark mode (set by the theme store). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Expose semantic tokens as Tailwind utilities: bg-surface, text-muted, border-border … */
+@theme inline {
+  --font-sans: 'Geist Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-elevated: var(--surface-elevated);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-fg: var(--accent-foreground);
+  --color-accent-text: var(--accent-text);
+  --color-ring: var(--ring);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+
+  --color-brand-violet: var(--brand-violet);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-cyan: var(--brand-cyan);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+
+  --radius-control: var(--r-control);
+  --radius-card: var(--r-card);
+
+  --shadow-xs: var(--elevation-xs);
+  --shadow-card: var(--elevation-card);
+  --shadow-overlay: var(--elevation-overlay);
+
+  /* Typography scale (size / line-height / tracking) */
+  --text-title: 1.875rem;
+  --text-title--line-height: 2.25rem;
+  --text-title--letter-spacing: -0.025em;
+  --text-section: 1.25rem;
+  --text-section--line-height: 1.75rem;
+  --text-section--letter-spacing: -0.015em;
+  --text-card: 0.9375rem;
+  --text-card--line-height: 1.375rem;
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.375rem;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1rem;
+  --text-kpi: 2rem;
+  --text-kpi--line-height: 2.25rem;
+  --text-kpi--letter-spacing: -0.03em;
+
+  --ease-out: var(--motion-ease-out);
+  --ease-in-out: var(--motion-ease-in-out);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  /* Visible, consistent focus for keyboard users only. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+  }
+
+  /* Financial / analytical figures line up in columns. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum', 'cv11', 'ss01';
+  }
+}
+
+/* Smooth theme switch — applied only for the duration of a toggle (see lib/theme.ts). */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    fill var(--duration-base) var(--ease-out),
+    stroke var(--duration-base) var(--ease-out) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)" />
+    <meta
+      name="description"
+      content="Aether — a premium, universal SaaS dashboard template built with React, TypeScript and Tailwind CSS."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Aether Dashboard" />
+    <meta property="og:description" content="A premium, universal SaaS dashboard template." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Aether Dashboard</title>
+    <!-- Applies the saved theme before first paint to prevent a flash of the wrong theme. -->
+    <script>
+      ;(function () {
+        try {
+          var saved = JSON.parse(localStorage.getItem('aether-theme') || '{}')
+          var pref = (saved && saved.state && saved.state.theme) || 'system'
+          var dark =
+            pref === 'dark' ||
+            (pref === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          var root = document.documentElement
+          root.classList.toggle('dark', dark)
+          root.style.colorScheme = dark ? 'dark' : 'light'
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <noscript>This dashboard needs JavaScript to run. Please enable it in your browser settings.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

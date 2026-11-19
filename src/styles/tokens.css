@@ -1,0 +1,110 @@
+/*
+ * Aether design tokens — the single source of truth.
+ *
+ * Layer 1 (raw):      brand + scale values that never change per theme.
+ * Layer 2 (semantic): role-based tokens (--background, --foreground …) redefined per theme.
+ * Components only ever consume Layer 2 through Tailwind utilities (bg-surface, text-muted …).
+ * To re-skin the template, edit this file only.
+ */
+
+:root {
+  /* ── Layer 1 · Brand ─────────────────────────────── */
+  --brand-violet: #7157f5;
+  --brand-purple: #8b5cf6;
+  --brand-blue: #4f8df7;
+  --brand-cyan: #22c7c9;
+
+  --gradient-brand: linear-gradient(135deg, #8b5cf6 0%, #7157f5 45%, #4f8df7 100%);
+  --gradient-brand-soft: linear-gradient(135deg, #7157f5 0%, #4f8df7 100%);
+
+  /* ── Layer 1 · Scale ─────────────────────────────── */
+  --r-control: 0.625rem; /* 10px — buttons, inputs */
+  --r-card: 0.875rem; /* 14px — cards */
+  --sidebar-width: 16.25rem; /* 260px */
+  --sidebar-width-collapsed: 4.5rem;
+  --header-height: 4.25rem; /* 68px */
+  --content-max: 100rem; /* 1600px */
+
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 250ms;
+  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ── Layer 2 · Semantic — LIGHT ──────────────────── */
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  --foreground: #111827;
+  --muted: #64748b;
+  --subtle: #f1f5f9; /* hover / zebra fills */
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  --accent: #7157f5; /* brand as UI color */
+  --accent-hover: #5f46e0;
+  --accent-soft: rgb(113 87 245 / 0.1);
+  --accent-foreground: #ffffff;
+  --accent-text: #5b43d6; /* brand as text on surface (AA) */
+  --ring: rgb(113 87 245 / 0.45);
+
+  --success: #15803d;
+  --success-soft: rgb(21 128 61 / 0.1);
+  --warning: #b45309;
+  --warning-soft: rgb(180 83 9 / 0.1);
+  --danger: #dc2626;
+  --danger-soft: rgb(220 38 38 / 0.08);
+  --info: #2563eb;
+  --info-soft: rgb(37 99 235 / 0.08);
+
+  --elevation-xs: 0 1px 2px rgb(15 23 42 / 0.04);
+  --elevation-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 1px 3px rgb(15 23 42 / 0.03);
+  --elevation-overlay: 0 12px 32px -8px rgb(15 23 42 / 0.16), 0 2px 6px rgb(15 23 42 / 0.06);
+
+  /* Chart series — validated for light surfaces */
+  --chart-1: #7157f5;
+  --chart-2: #4f8df7;
+  --chart-3: #22c7c9;
+  --chart-4: #f59e0b;
+  --chart-grid: #e8edf3;
+  --chart-axis: #94a3b8;
+}
+
+.dark {
+  /* ── Layer 2 · Semantic — DARK ───────────────────── */
+  --background: #0b0d12;
+  --surface: #151821;
+  --surface-elevated: #1c202b;
+  --foreground: #f8fafc;
+  --muted: #94a3b8;
+  --subtle: #1a1e29;
+  --border: #293040;
+  --border-strong: #3a4357;
+
+  --accent: #8b74ff;
+  --accent-hover: #9d89ff;
+  --accent-soft: rgb(139 116 255 / 0.14);
+  --accent-foreground: #ffffff;
+  --accent-text: #b4a5ff;
+  --ring: rgb(139 116 255 / 0.55);
+
+  --success: #4ade80;
+  --success-soft: rgb(74 222 128 / 0.12);
+  --warning: #fbbf24;
+  --warning-soft: rgb(251 191 36 / 0.12);
+  --danger: #f87171;
+  --danger-soft: rgb(248 113 113 / 0.12);
+  --info: #60a5fa;
+  --info-soft: rgb(96 165 250 / 0.12);
+
+  --elevation-xs: 0 1px 2px rgb(0 0 0 / 0.3);
+  --elevation-card: 0 0 0 1px rgb(255 255 255 / 0.015), 0 1px 2px rgb(0 0 0 / 0.25);
+  --elevation-overlay: 0 16px 40px -8px rgb(0 0 0 / 0.55), 0 2px 8px rgb(0 0 0 / 0.35);
+
+  --chart-1: #8b74ff;
+  --chart-2: #5b9bff;
+  --chart-3: #2dd4d6;
+  --chart-4: #fbbf24;
+  --chart-grid: #232938;
+  --chart-axis: #64748b;
+}
